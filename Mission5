@@ -1,0 +1,89 @@
+File
+
+Edit
+
+Debug
+
+Test
+
+Workspace
+
+Help
+
+<
+
+>
+
+Code Coverage: None
+54
+
+Go To
+1
+public class Mission5 {
+2
+    
+3
+    public static void findMultiples (){//Declares method
+4
+        
+5
+        //Declares a Listcalled “input”, 
+6
+        //which will be used to hold 4 numbers: “12, 20, 30, 17”
+7
+        
+8
+        List<Integer> input = new List<Integer>{12,20,30,17};   //Creates List and inputs values
+9
+            System.debug('This List input contains' + input);   //Shows what this List contains
+10
+        
+11
+        for(Integer i:input) {
+12
+            
+13
+            //Loop through “input”, for each number display “Ding” via SystemDebug if “input” is 
+14
+            //muliples of 3 and “Dong” if it is multiples of 5            
+15
+            
+16
+            //If “input” is multiples of both 3 and 5, display “DingDong”
+17
+            if(math.mod(i,3) == 0 && math.mod(i,5) == 0){//condition is true
+18
+                System.debug('This number has multiples of both 3 & 5 call DingDong '+ i);
+19
+            }
+20
+            //If input has multiple of 3
+21
+            else if (math.mod(i,3) == 0){//condition is true
+22
+                System.debug('This number has multiples of 3 call Ding '+ i);
+23
+            }
+24
+            //input has a multiple of 5
+25
+            else if(math.mod(i,5) == 0){//condition is true
+26
+                System.debug('This number has mulitples of 5 call Dong '+ i);
+27
+            }
+28
+            //For input that are neither multiples of 3 or 5, returns the input number  
+29
+            else    
+30
+            {System.debug('This number has neither multiples of 3 or 5 '+ i);}   
+31
+            
+32
+        }
+33
+    } 
+34
+}
+ 
