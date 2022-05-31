@@ -1,0 +1,10 @@
+//Apex Class
+
+public class SalesforceWorld {
+//apex method
+    public static void myFirstMethod() {
+        //debugs
+        System.debug('Welcome to Salesforce World');
+        System.debug('How are you?');
+    }
+}

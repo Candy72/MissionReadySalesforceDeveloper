@@ -1,0 +1,106 @@
+public class DMLClass {
+    
+    public static void createAccount() {
+        
+        Account accToCreate = new Account();//instance of the Account
+        accToCreate.Name =  'Test Account from Dev Console';
+        accToCreate.AccountNumber = '12345';
+        accToCreate.Type = 'Customer-Direct';
+        insert accToCreate;
+        System.debug('accToCreate***'+accToCreate);//accToCreate***Account:{Name=Test Account from Dev Console, AccountNumber=1234, Type= Customer-Direct, Id=}
+        
+        //to execute
+        //DMLClass.createAccount();    
+    }
+    ////(1)access modifier - public
+    //(2)static or non static - static
+    //(3)what is the return type - return the city name --String
+    //(4)method name - displayCity
+    //(5) Input parameters -- String
+    public static Contact createContact(){
+        
+        Contact contactToCreate = new Contact();
+        contactToCreate.FirstName = 'Mission';
+        contactToCreate.LastName = 'Ready';
+        contactToCreate.MobilePhone = '1234';
+        contactToCreate.HomePhone = '12345';
+        contactToCreate.email = 'test@test.com';
+        insert contactToCreate;
+        
+        return contactToCreate;
+        
+    }
+    //Create method with input parameters to creat opportunity
+    ////(1)access modifier - public
+    //(2)static or non static - static
+    //(3)what is the return type -opportunity
+    //(4)method name -createOpportunity
+    //(5) Input parameters -- Name, CloseDate and StageName
+    public static Opportunity createOpportunity(){
+        
+        Opportunity OpptyToCreate = new Opportunity();
+        OpptyToCreate.Name = 'Golden Ticket';
+        OpptyToCreate.StageName = 'New Opportunity';
+        OpptyToCreate.CloseDate = system.today();
+        OpptyToCreate.Discount_Percent__c = 0;
+        
+        
+        insert OpptyToCreate;
+        
+        return OpptyToCreate;
+        
+    }
+    //to execute create oppty
+    //Opportunity OpptyToCreate = DMLClass.createOpportunity('MissionReady',Closed Won,System.today(),10;
+    //System.debut('OpptyToCreate***'+OpptyToCreate);
+    
+    //UPDATE ACCOUNT    - static method
+    //(1)access modifier - public
+    //(2)static or non static - static
+    //(3)what is the return type - return the city name --String
+    //(4)method name - displayCity
+    //(5) Input parameters -- String
+    //
+    public static void updateAccount(){
+        Account updateAccount = new Account(id='001Iw000002PnmqIAC');
+        updateAccount.Name = 'Not Verified';
+        update updateAccount;
+        
+        System.debug('updateAccount**'+updateAccount);
+        
+        //how to execute - Static method
+        //DMLClass.updateAccount();
+    }
+    
+    
+    
+    //UPDATE CONTACT - NON STATIC METHOD
+    public Contact updateContact(){
+        Contact updateContact = new Contact(id='003Iw000001g7iOIAQ');
+        updateContact.FirstName = 'Verified';
+        updateContact.LastName = 'Contact';
+        update updateContact;
+        
+        return updateContact;
+    }
+    //how to execute -NON STATIC METHOD
+    //DMLClass className = new DMLClass();
+    //Contact updateContact = className.updateContact();
+    //System.debug('updateContact***'+updateContact);
+    
+    //**Create a method to update Opportunity Stage as Closed Won
+    //and method should input paramater as StageName
+    //NON STATIC METHOD
+    
+    public Opportunity updateOpportunity(String stage){
+        Opportunity updateOpportunity = new Opportunity(id='006Iw000002O1MCIA0');
+        updateOpportunity.StageName = stage;
+        update updateOpportunity;
+        
+        return updateOpportunity;
+    }
+    //how to execute - NON STATIC METHOD
+    //DMLClass className = new DMLClass();
+    //Opportunity updateOpportunity = className.updateOpportunity('Closed Won');
+    //System.debug('updateOpportunity***'+updateOpportunity);
+}

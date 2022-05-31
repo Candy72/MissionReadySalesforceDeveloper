@@ -1,0 +1,23 @@
+public class QueryExamples {
+    
+    //Query all accounts from Salesforce
+    //
+    public static void queryAccounts(){
+      List<Account> accountList = [SELECT Id, Name FROM Account];
+        System.debug('accountList***'+accountList);
+             
+    }
+    //Query 5 accoungs only
+    public static void queryLimitedAccounts(){
+        List<Account> accountList = [Select Id, Name From Account Order by Name LIMIT 5];
+        System.debug('accountList***'+accountList);
+      
+        //to execute  
+        //QueryExamples.queryLimitedAccounts();
+        //19:28:29:044 USER_DEBUG [13]|DEBUG|accountList***(Account:{Id=001Iw000002PAJfIAO, Name=Audioslave, RecordTypeId=012Iw0000004fdJIAQ}, Account:{Id=001Iw000001nfGjIAI, Name=Burlington Textiles Corp of America}, Account:{Id=001Iw000001nfGlIAI, Name=Dickenson plc}, Account:{Id=001Iw000001nfGiIAI, Name=Edge Communications}, Account:{Id=001Iw000001nfGoIAI, Name=Express Logistics and Transport})
+        //
+        //
+        
+    }
+
+}

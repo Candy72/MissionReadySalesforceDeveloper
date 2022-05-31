@@ -1,0 +1,123 @@
+public class MassDMLClass {
+    
+    public static void createAccounts(){
+        
+        List<Account> accToCreateList = new List<Account>();
+        
+        //creating the accounts
+        Account account1 = new Account();//instance of the Account
+        account1.Name =  'Test Account1 from Dev Console';
+        account1.AccountNumber = '12345';
+        account1.Type = 'Customer-Direct';
+        accToCreateList.add(account1);
+        
+        
+        Account account2 = new Account();//instance of the Account
+        account2.Name =  'Test Account2 from Dev Console';
+        account2.AccountNumber = '12345';
+        account2.Type = 'Customer-Direct';
+        accToCreateList.add(account2);
+        
+        Account account3 = new Account();//instance of the Account
+        account3.Name =  'Test Account3 from Dev Console';
+        account3.AccountNumber = '12345';
+        account3.Type = 'Customer-Direct';
+        accToCreateList.add(account3);
+        
+        insert accToCreateList;
+        System.debug('accToCreateList***'+accToCreateList);
+        
+        
+        
+        //to execute
+        //MassDMLClass.createAccounts();           
+    }
+    
+    // Create 3 opportunity with Stage as Closed Won
+    public static void createOppty(){
+        List<Opportunity> oppToCreateList = new List<Opportunity>();
+        //creating the opportunities
+        Opportunity OpptyToCreate1 = new Opportunity();//instance of the Opportunity
+        OpptyToCreate1.Name = 'Test Opportunity 1 from Dev Console';
+        OpptyToCreate1.StageName = 'Closed Won';
+        OpptyToCreate1.CloseDate = system.today();
+        OpptyToCreate1.Discount_Percent__c = 0;
+        oppToCreateList.add(OpptyToCreate1);
+        
+        Opportunity OpptyToCreate2 = new Opportunity();//instance of the Opportunity
+        OpptyToCreate2.Name = 'Test Opportunity 2 from Dev Console';
+        OpptyToCreate2.StageName = 'Closed Won';
+        OpptyToCreate2.CloseDate = system.today();
+        OpptyToCreate2.Discount_Percent__c = 0;
+        oppToCreateList.add(OpptyToCreate2);
+        
+        Opportunity OpptyToCreate3 = new Opportunity();//instance of the Opportunity
+        OpptyToCreate3.Name = 'Test Opportunity 3 from Dev Console';
+        OpptyToCreate3.StageName = 'Closed Won';
+        OpptyToCreate3.CloseDate = system.today();
+        OpptyToCreate3.Discount_Percent__c = 0;
+        oppToCreateList.add(OpptyToCreate3);
+        
+        insert oppToCreateList;
+        System.debug('oppToCreateList***'+oppToCreateList);
+    }
+    
+    //Mass update using query
+    public static void massUpdateAccounts(){
+        
+        List<Account> accList= [SELECT Id, Name FROM Account where Name= 'Test Account1 from Dev Console' or Name = 'Test Account2 from Dev Console' or Name ='Test Account3 from Dev Console'];
+        
+        List<Account> accToUpdate = new List<Account>();
+        for(Account acc:accList){
+            
+            acc.Name = 'Verified Account from Dev Console';
+            accToUpdate.add(acc);
+        }
+        //always insert/update outside for loop **exam qu
+        
+        update accToUpdate;
+        System.debug('accToUpdate***'+accToUpdate);
+        
+        //to execute
+        //MassDMLClass.massUpdateAccounts();
+    }
+    
+    //Mass Update Opportunities which are created today with name as 'Todays Opptys'
+    ////Select ID, Name From Opportunity where CreatedDate = Today
+    
+        public static void massUpdateOpportunity(){
+        
+        List<Opportunity> oppList= [SELECT Id, Name FROM Opportunity where CreatedDate = Today];
+        
+        List<Opportunity> oppToUpdate = new List<Opportunity>();
+        for(Opportunity opp:oppList){
+            
+            opp.Name = 'Todays Opptys';
+            oppToUpdate.add(opp);
+        }
+        //always insert/update outside for loop **exam qu
+        
+        update oppToUpdate;
+        System.debug('oppToUpdate***'+oppToUpdate);
+    
+            }
+    
+    
+        //To Delete Accounts created today
+            public static void deleteAccounts(){
+                List<Account> accList = [SELECT Id, Name FROM Account where CreatedDate = Today];
+                delete accList;
+                //To Execute
+                //MassDMLClass.deleteAccounts();   
+}    
+    
+    
+      //To Delete Opportunities created today
+            public static void deleteOpptys(){
+                List<Opportunity> oppList = [SELECT Id, Name FROM Opportunity where CreatedDate = Today];
+                delete oppList;
+                //To Execute
+                //MassDMLClass.deleteOpptys();   
+}
+    
+}

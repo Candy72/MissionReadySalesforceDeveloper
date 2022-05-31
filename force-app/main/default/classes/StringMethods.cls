@@ -1,0 +1,42 @@
+public class StringMethods {
+    
+    public static void testStringMethods() {
+        
+        String letters = 'ABCD';
+        Integer lengthOfString = letters.length();
+        System.debug(lengthOfString);//4
+        
+        String city = 'Auckland';
+        String country = 'New Zealand';
+        String address = city+' '+'and'+ ' '+country;
+        System.debug(address);//Auckland and New Zealand
+        
+        Integer lengthOfAddress = address.length();
+        System.debug(lengthOfAddress);//24
+        
+        String firstName = 'Rob';
+        String lastName = 'rob';
+        
+        If(firstName.equalsIgnoreCase(lastName)){
+        	System.debug('They are identical');
+    }else{
+        System.debug('They are not identical');
+        
+    }
+        
+        if(firstName == lastName ){
+            System.debug('They are identical Names');
+        }else{
+        	System.debug('They are not identical Names');
+        }
+         
+    
+		//Testing String functions
+		String color = 'black ' + '& white'; 
+	    System.debug('color***'+color);
+    	System.debug('colorLength***'+color.length());
+    	System.debug('colorIndexOfK***'+color.indexOf('k'));
+    	System.debug('colorlowercase***'+color.tolowercase());
+    }	
+
+}

@@ -1,0 +1,23 @@
+public class ListExamples {
+	
+    public static void fruitExamples(){
+        
+     
+        //Creating list of platter
+        List<String> platterList =  new List<String>();
+        platterList.add('Pear');//index - 0
+        platterList.add('Apple');//index -1
+        platterList.add('Banana');//index -2
+        platterList.add('Orange');//index -3
+               
+        System.debug('platterList***'+platterList);//OUtput in logs -- platterList(Pear,Apple,Banana,Orange)
+        
+        System.debug('Pear***'+platterList[0]);
+        System.debug('Apple***'+platterList[1]);
+        System.debug('Banana***'+platterList[2]);
+        System.debug('Orange***'+platterList[3]);
+   
+       // System.debug('keys***'+countryList.KeySet);
+        //System.debug('Values***'+countryList.Values);
+    }
+}
