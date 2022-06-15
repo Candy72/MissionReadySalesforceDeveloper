@@ -1,0 +1,28 @@
+public class AccountAndContactCreate {
+    
+    public static Account accountAndContactCreate(){
+        
+        //always look to see what fields are required -  these need to be add below 
+        Account acc = new Account();
+        acc.Name ='AIA';
+        acc.AccountNumber ='1234';
+        acc.Type ='Prospect';
+        acc.Phone = '123456';
+        acc.Rating = 'Hot';
+        
+        insert acc;
+        System.debug('The account name is '+ acc);
+        
+        Contact con = new Contact();
+        con.FirstName = 'Ankit';
+        con.LastName = 'Singh';
+        con.AccountId = acc.Id;
+        insert con;
+        return acc;
+           
+        }
+    }
+
+//to execute
+//Account output = AccountAndContactCreate();
+//System.debug('output****'+output);
