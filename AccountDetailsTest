@@ -1,0 +1,32 @@
+@isTest
+public class AccountDetailsTest {
+    //Test to createAccount
+    public static testmethod void UpdateAccounttest(){
+        
+        Test.startTest();
+        
+        	Account accToCreate1 = new Account();//instance of the account
+        	accToCreate1.Name = 'Verified Account';
+        	accToCreate1.AccountNumber = '12345';
+        	accToCreate1.Type = 'Customer-Direct';
+        	insert accToCreate1;
+        
+        	Account accToCreate2 = new Account();//instance of the account
+        	accToCreate2.Name = 'Verified Account';
+        	accToCreate2.AccountNumber = '12345';
+        	accToCreate2.Type = 'Customer-Direct';
+        	insert accToCreate2;
+        
+            List<Account> output = AccountDetails.UpdateAccount();
+            System.debug('output***' + output);
+        
+        	List<Account> result = [Select id,Site from Account];
+        
+        	System.assertEquals('Verified Site', result[0].site);
+            System.assertEquals('Verified Site', result[1].site);
+        	
+        Test.stopTest();
+    }
+ 
+
+}
