@@ -1,0 +1,23 @@
+@isTest
+public class ContactCreatedFromAccountTest {
+    
+    public static testMethod void testContactedCreatedFromAccountTrigger() {
+        
+        test.startTest();
+        
+            Account acc = new Account();
+        	acc.Name = 'Test Account';
+        	acc.accountNumber = '12345';
+        	acc.Type = 'Customer-Direct';
+            acc.Rating = 'Hot';
+        	insert acc;
+        
+        List<Contact> contactList = [Select id, FirstName, LastName from Contact where FirstName = 'John' and  LastName = 'Cruise'];
+        	System.assertEquals('John', contactList[0].FirstName);
+        	System.assertEquals('Cruise', contactList[0].LastName);
+            
+        test.stopTest();
+        
+    }
+
+}
