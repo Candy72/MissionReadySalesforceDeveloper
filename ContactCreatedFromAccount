@@ -1,0 +1,18 @@
+trigger ContactCreatedFromAccount on Account (after insert) {
+    
+    if(Trigger.isAfter){
+        if(Trigger.isInsert){
+            List<Contact> contactToCreateList = new List<Contact>();
+            for (Account acc : trigger.new) {
+                Contact contactToCreate = new Contact();
+                contactToCreate.FirstName = 'John';
+                contactToCreate.LastName = 'Cruise';
+                contactToCreate.Phone = '12345';
+                contactToCreate.AccountID = acc.Id;
+                contactToCreateList.add(contactToCreate);
+            }
+            insert contactToCreateList;
+        }
+    }
+
+}
