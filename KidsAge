@@ -1,0 +1,36 @@
+public class kidsAge {
+     public static void superQualified() {
+  		Integer kidsAge = 40;
+    	Integer mumsAge = kidsAge * 2;
+        String qualifiedSuper;      
+    
+    	/*if (mumsAge >= 65) {
+            qualifiedSuper = 'Qualified for Super';
+        	System.debug(qualifiedSuper);
+    	}
+         else {
+        	System.debug('Not Qualified for Super'); 
+     }
+         if(mumsAge >=65) {
+        	System.debug('qualified for $' + mumsAge * 10);
+         } else {
+             System.debug('not qualified');
+         }   */ 
+         
+        if(mumsAge <65) {
+        	System.debug('not qualified');
+         } else if (mumsAge <75) {
+             System.debug('Qualifed for ' + mumsAge * 10);
+         } else {
+             System.debug('qualified for ' + mumsAge * 100);
+         }
+             
+        /* if(mumsAge >=75) {
+        	System.debug('qualified for ' + mumsAge * 100);
+         } else if (mumsAge >=65){
+             System.debug('qualified for' + mumsAge * 10);
+         }else {
+             System.debug('not qualified');
+		}*/
+}
+}
