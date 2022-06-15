@@ -1,0 +1,23 @@
+trigger CreateBatchLeads on Lead (before insert) {
+    
+    If(Trigger.isBefore){
+        If(Trigger.isInsert){
+            
+            List<Lead> leadToCreateList = new List<Lead> ();
+            for (Lead l : trigger.new){
+                for(Integer i=0;i<=10;i++){// this loop will run from 0 --- 9 bcz i < 10
+                    
+                    Lead leadToCreate = new Lead();
+                    leadToCreate.FirstName = 'Batch Leads';
+                    leadToCreate.LastName = 'from trigger';
+                    leadToCreate.Company = 'Batch Leads from trigger';
+                    leadToCreateList.add(leadToCreate);
+                     
+                }
+                
+            }
+			insert leadToCreateList;
+        }
+    }
+
+}
