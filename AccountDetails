@@ -1,0 +1,23 @@
+public class AccountDetails {
+    //create a method UpdateAccount
+    public static List<Account> UpdateAccount(){
+        
+		List<Account> accList = [Select id,Name,Site from Account where Name LIKE '%verified%'];
+
+		List<Account> updateAccountList = new List<Account>();
+        for(Account acc:accList){
+            
+            acc.Site = 'Verified Site';
+            updateAccountList.add(acc);
+            
+        }
+        
+        update updateAccountList;
+        
+        return updateAccountList;
+        
+        //how to execute - Static method
+        //AccountDetails.UpdateAccount();
+        
+    }
+}
