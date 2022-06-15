@@ -1,0 +1,24 @@
+trigger AccountExamplesTrigger on Account (before insert, before update) {
+    
+    if(Trigger.isBefore){
+        if(Trigger.isInsert){
+
+            for (Account acc : trigger.new){
+                acc.Rating = 'Hot';
+                
+            }
+            
+        }
+        if(Trigger.isUpdate){
+            //on update of Account
+              for (Account acc : trigger.new){
+                  if(acc.Name == 'Cold Account'){
+                      acc.Name = 'Cold';
+                  }
+        
+            
+    }
+    }
+    	
+}
+}
