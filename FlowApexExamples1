@@ -1,0 +1,41 @@
+public class FlowApexExamples1 {
+    
+    //get Account name from this method
+    ////pass record id from method getAccountNames input parameter
+    //
+    //access identifier - public
+    //static or non static - public
+    //Return type - List<String>
+    //Method name - getAccountNames 
+    //Input parameters - idofAccounts  (What input you are expecting from the user)
+    @InvocableMethod(callout=true label='Get Name from the Account')
+    public static List<String> getAccountNames(List<Id> idofAccounts){
+        
+        List<Account> accList = [Select id,name from Account where ID  IN: idofAccounts];
+        
+        List<String> accountNames = new List<String>();
+        for(Account acc:accList){
+            accountNames.add(acc.Name);
+            
+        }
+        return accountNames;
+        
+        //to execute all names or just a specific id (id number to hard coded)
+        //List<String> names = FlowApexExamples1.getAccountNames();
+		//System.debug('names***'+names);
+		//
+		//to execute input paramenter
+		//List<String> names = FlowApexExamples1.getAccountNames('001Iw000002LR7wIAG');
+		//System.debug('names***'+names);
+		//
+		//further to input parameter variable
+		//List<Id> ids = new List<Id>();
+		//ids.add('001Iw000002LR7wIAG');
+		//ids.add('001Iw000001nfGjIAI');
+		
+		//List<String> output = FlowApexExamples1.getAccountNames(ids);
+		//System.debug('output***'+output);
+		//
+    }
+
+}
