@@ -1,0 +1,60 @@
+//this it the code from Afraz below.  
+
+public class AccountTypeUpdates {
+	
+    public static void updateAccounts(){
+        
+	List<Account> accList = [Select Id, Employment_Type__c,Employment_Sub_Type__c from Account where Employment_Type__c != null ];
+
+	List<Account> updatedAccountList = new List<Account>();
+	for(Account acc:accList){
+		if(acc.Employment_Type__c == 'Employee'){
+		acc.Employment_Sub_Type__c = 'Contractor';
+		updatedAccountList.add(acc);
+		}
+        if(acc.Employment_Type__c == 'Employer'){
+			acc.Employment_Sub_Type__c = 'Business Man';
+			updatedAccountList.add(acc);
+		}
+	}
+		if(updatedAccountList.size() >0 ){
+			update updatedAccountList;
+			}
+		}
+}
+//to execute
+//AccountTypeUpdates.updateAccounts();
+
+
+
+/*
+ * 
+ * Below is from peeyush
+ * public class AccountTypeUpdates {
+    
+    public static list<Account> updateEmploymentSubtype(){
+        
+        List<Account> accList =[Select Id, Name,Type__c, Employment_Sub_Type__c FROM Account where CreatedDAte = Today];
+        
+        list<Account> accToUpdate = new list<Account>();
+        
+        for(Account acc : accList) {
+            if (acc.Type__c == 'Employer') {
+                acc.Employment_Sub_Type__c = 'Business Man';
+                accToUpdate.add(acc);
+            }
+            else { 
+                acc.Employment_Sub_Type__c = 'Contractor';
+                  accToUpdate.add(acc);
+                
+                return
+         
+        }
+        
+    
+    } 
+    
+    
+}
+
+}*/
