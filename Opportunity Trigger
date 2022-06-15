@@ -1,0 +1,21 @@
+trigger OpportunityTrigger on Opportunity (before insert, before update) {
+    
+     if(trigger.isBefore){
+        if(trigger.isInsert){
+            //on create of Opportunity
+            for (Opportunity opp : trigger.new){
+                opp.CloseDate = System.today();
+            }
+		                }
+     
+        if(trigger.isUpdate){
+            
+           	//on update of Opportunity
+            for (Opportunity opp : trigger.new) {
+                if(opp.StageName == 'Closed Won'){
+                    opp.Name = 'Closed Opportunity';
+                }
+            }
+                 }
+                 }
+                 }
