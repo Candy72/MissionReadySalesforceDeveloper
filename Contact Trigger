@@ -1,0 +1,31 @@
+trigger ContactTrigger on Contact (before insert, before update, after insert, after update) {
+    
+    //after After Update trigger block
+    if(Trigger.isAfter){
+        
+        if(Trigger.isInsert){
+            //after insert action
+            
+        }
+        if(Trigger.isUpdate){
+            //after update action
+            ////creating list of Account Ids
+            List<Id> accountIds = new List<Id>();
+       
+            for(Contact con : trigger.new){
+                if(con.Title == 'Primary Contact'){
+                Id accountID = con.AccountId;
+                accountIds.add(accountId);   
+            }    
+        }
+        List<Account> accountsToUpdate = new List<Account>();
+        List<Account> accList = [Select id, Type from Account where Id IN:accountIds ];
+        
+        for (Account acc:accList){
+            acc.Type = 'Customer-Direct';
+            accountsToUpdate.add(acc);
+        }
+        update accountsToUpdate;
+    }
+    }
+}
