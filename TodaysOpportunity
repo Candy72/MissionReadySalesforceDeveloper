@@ -1,0 +1,17 @@
+public class TodaysOpportunity {
+     
+    public static Opportunity createOpportunity(){
+        
+        Opportunity OpptyToCreate = new Opportunity();
+        OpptyToCreate.Name = 'Name Today';
+        OpptyToCreate.StageName = 'New Opportunity';
+        OpptyToCreate.CloseDate = system.today();
+        OpptyToCreate.Discount_Percent__c = 0;
+        
+        
+        insert OpptyToCreate;
+        
+        return OpptyToCreate;
+
+}
+}
