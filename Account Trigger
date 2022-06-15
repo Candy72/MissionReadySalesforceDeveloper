@@ -1,0 +1,26 @@
+trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
+
+    if(trigger.isBefore){
+        if(trigger.isInsert){
+            //when record is created
+			System.debug('Hi i am an insert!!!');  
+            System.debug('New Valuse***'+Trigger.new);
+                }
+        if(trigger.isUpdate){
+            
+           	//when record is updated
+            System.debug('Hi i am an update!!!'); 
+            System.debug('Old Valuse***'+Trigger.old);
+            System.debug('New Valuse***'+Trigger.new);
+    }
+}    
+    if(trigger.isAfter){
+        if (trigger.isInsert){
+            //when record is created and create/update is required on related object  
+        }
+        if(trigger.isUpdate){
+        	 //when record is updated and create/update is required on related object  
+        	 //INTERVIEW OR EXAM QUESTION
+        }
+    }
+}
