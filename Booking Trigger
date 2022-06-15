@@ -1,0 +1,31 @@
+trigger BookingTrigger on Booking__c (before insert, before update, after insert, after update) {
+    
+    //after After Update trigger block
+    if(Trigger.isAfter){
+        
+        if(Trigger.isInsert){
+            //after insert action
+            
+        }
+        if(Trigger.isUpdate){
+            //after update action
+            ////creating list of Account Ids
+            List<Id> accountIds = new List<Id>();
+       
+            for(Booking__c book : trigger.new){
+                if(book.Type__c  == 'Train'){
+                Id accountID = book.Account__c;
+                accountIds.add(accountId);   
+            }    
+        }
+        List<Account> accountsToUpdate = new List<Account>();
+        List<Account> accList = [Select id, Industry from Account where Id IN:accountIds ];
+        
+        for (Account acc:accList){
+            acc.Industry  = 'Energy';
+            accountsToUpdate.add(acc);
+        }
+        update accountsToUpdate;
+    }
+    }
+}
